@@ -12,7 +12,7 @@ class AboutPage extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text(
-            'About Page',
+            'About Page', // my comment
           ),
           actions: [
             Icon(
