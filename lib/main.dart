@@ -11,10 +11,10 @@ class AboutPage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'About Page',
           ),
-          actions: [
+          actions: const [
             Icon(
               Icons.home,
               color: Colors.white,
@@ -24,9 +24,9 @@ class AboutPage extends StatelessWidget {
             return IconButton(
               onPressed: () {
                 ///open drawer using scafffold
-                Scaffold.of(ctx).openDrawer();
+                Scaffold.of(ctx).openDrawer(); // ctx=context
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.menu,
                 color: Colors.white,
               ),
