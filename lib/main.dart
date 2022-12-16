@@ -15,10 +15,16 @@ class AboutPage extends StatelessWidget {
             'About Page',
           ),
           actions: [
-            Icon(
-              Icons.home,
-              color: Colors.white,
-            ),
+            Builder(builder: (ctx) {
+              return IconButton(
+                onPressed: () {
+                  Scaffold.of(ctx).openEndDrawer();
+                },
+                icon: Icon(
+                  Icons.menu_book,
+                ),
+              );
+            })
           ],
           leading: Builder(builder: (ctx) {
             return IconButton(
@@ -82,6 +88,34 @@ class AboutPage extends StatelessWidget {
         onDrawerChanged: (val) {
           print('on drawer chnage:$val');
         },
+        endDrawer: Drawer(
+          child: ListView(
+            children: [
+              UserAccountsDrawerHeader(
+                accountName: Text("acount namer"),
+                accountEmail: Text('youreamila@gmail.com'),
+              ),
+            ],
+          ),
+        ),
+        persistentFooterButtons: [
+          OutlinedButton(
+            onPressed: () {},
+            child: Text("Home"),
+          ),
+          OutlinedButton(
+            onPressed: () {},
+            child: Text("Profile"),
+          ),
+          OutlinedButton(
+            onPressed: () {},
+            child: Text("Index"),
+          ),
+        ],
+        bottomNavigationBar: Container(
+          height: 80,
+          color: Colors.red,
+        ),
       ),
     );
   }
