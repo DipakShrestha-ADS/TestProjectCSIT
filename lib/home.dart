@@ -11,7 +11,21 @@ class Home extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(Icons.settings),
+            GestureDetector(
+              child: Icon(Icons.settings),
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  backgroundColor: Colors.amber,
+                  duration: Duration(microseconds: 1000),
+                  content: Text(
+                    'Welcome to settings on Tap',
+                    style: TextStyle(
+                      color: Colors.black87,
+                    ),
+                  ),
+                ));
+              },
+            ),
             Icon(Icons.add_a_photo),
           ],
         ),
