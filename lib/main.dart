@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_project/home.dart';
+import 'package:test_project/widget/custom_container.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -18,7 +19,8 @@ class _myhomeState extends State<myhome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Home(),
+      appBar: AppBar(title: Text("widget")),
+      body: CustomeCustomer(),
     );
   }
 }
