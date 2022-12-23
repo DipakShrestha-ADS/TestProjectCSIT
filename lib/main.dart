@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:test_project/home.dart';
 import 'package:test_project/widget/custom_container.dart';
+import 'package:test_project/widget/custome_row.dart';
+import 'package:test_project/widget/custome_stack.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -20,7 +22,8 @@ class _myhomeState extends State<myhome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("widget")),
-      body: CustomeCustomer(),
+      body: SingleChildScrollView(
+          scrollDirection: Axis.vertical, child: CustomeStack()),
     );
   }
 }
