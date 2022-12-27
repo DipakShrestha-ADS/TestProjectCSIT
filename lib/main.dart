@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:test_project/widgets/index_stacked_widget.dart';
+import 'package:test_project/widgets/screens.widget/gallery.dart';
+import 'package:test_project/widgets/screens.widget/home.dart';
+import 'package:test_project/widgets/screens.widget/profile.dart';
+import 'package:test_project/widgets/screens.widget/settings.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int currentIndex = 0;
+  Widget screenwidget = Home();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,15 +26,46 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Widgets'),
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              //CustomRow(),
-              //CustomColumn(),
-              //CustomStack(),
-              IndexedStackWidget(),
-            ],
-          ),
+        body: screenwidget,
+        bottomNavigationBar: BottomNavigationBar(
+          unselectedItemColor: Colors.blue[900],
+          selectedItemColor: Colors.blue[200],
+          currentIndex: currentIndex,
+          onTap: (index) {
+            print('index=$index');
+            currentIndex = index;
+            if (index == 0) {
+              screenwidget = Home();
+            } else if (index == 1) {
+              screenwidget = Profile();
+            } else if (index == 2) {
+              screenwidget = Settings();
+            } else {
+              screenwidget = Gallery();
+            }
+            setState(() {});
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+              ),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.people,
+              ),
+              label: 'Profile',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.settings,
+              ),
+              label: 'Setting',
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.image), label: 'Gallery'),
+          ],
         ),
       ),
     );
