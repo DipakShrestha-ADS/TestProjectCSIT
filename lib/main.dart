@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_project/widgets/custom_stack.dart';
+import 'package:test_project/widgets/index_stacked_widget.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
             children: [
               //CustomRow(),
               //CustomColumn(),
-              CustomStack(),
+              //CustomStack(),
+              IndexedStackWidget(),
             ],
           ),
         ),
