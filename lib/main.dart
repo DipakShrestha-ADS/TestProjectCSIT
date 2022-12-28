@@ -3,6 +3,7 @@ import 'package:test_project/home.dart';
 import 'package:test_project/widget/custom_container.dart';
 import 'package:test_project/widget/custome_row.dart';
 import 'package:test_project/widget/custome_stack.dart';
+import 'package:test_project/widget/indexed_stack.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -18,12 +19,35 @@ class myhome extends StatefulWidget {
 }
 
 class _myhomeState extends State<myhome> {
+  int myindex = 0;
+  Widget mywidget = IndexStack();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("widget")),
-      body: SingleChildScrollView(
-          scrollDirection: Axis.vertical, child: CustomeStack()),
+      body: mywidget,
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: myindex,
+          onTap: (index) {
+            myindex = index;
+            if (index == 0) {
+              mywidget = IndexStack();
+            } else if (myindex == 1) {
+              mywidget = CustomeCustomer();
+            } else
+              mywidget = CustomeRow();
+
+            setState(() {});
+          },
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), label: "setting"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.browse_gallery), label: "gallery")
+          ]),
+      // body: SingleChildScrollView(
+      //     scrollDirection: Axis.vertical, child: CustomeStack()),
     );
   }
 }

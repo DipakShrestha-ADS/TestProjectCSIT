@@ -8,15 +8,6 @@ class CustomeRow extends StatefulWidget {
 }
 
 class _CustomeRowState extends State<CustomeRow> {
-  Widget buildcontainer() {
-    return Container(
-      height: 50,
-      width: 30,
-      color: Colors.green,
-      child: Icon(Icons.video_call),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,15 +23,49 @@ class _CustomeRowState extends State<CustomeRow> {
               children: [
                 Icon(Icons.camera),
                 Icon(Icons.camera),
-                Icon(Icons.camera),
-                buildcontainer(),
-                buildcontainer(),
-                buildcontainer(),
-                buildcontainer(),
-                ...List.generate(100, (index) => buildcontainer())
+                BuildContainer(
+                    height: 20,
+                    width: 30,
+                    color: Colors.red,
+                    icon: Icons.read_more),
+                BuildContainer(
+                    height: 20,
+                    width: 30,
+                    color: Colors.green,
+                    icon: Icons.read_more),
+                ...List.generate(
+                  // list vitra list use gareko hunale ... use gareko
+                  100,
+                  (index) => BuildContainer(
+                      height: 10,
+                      width: 20,
+                      color: Colors.blue,
+                      icon: Icons.stacked_bar_chart),
+                )
               ],
             ),
           ]),
     );
+  }
+}
+
+class BuildContainer extends StatelessWidget {
+  final double height;
+  final double width;
+  final Color color;
+  final IconData icon;
+  const BuildContainer({
+    Key? key,
+    required this.height,
+    required this.width,
+    required this.color,
+    required this.icon,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: height, width: width, color: color, child: Icon(icon));
+    ;
   }
 }
