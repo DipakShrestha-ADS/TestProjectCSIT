@@ -98,6 +98,23 @@ class Home extends StatelessWidget {
                     child: Image.asset('assests/aa.jpg', fit: BoxFit.cover),
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 50,
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.add,
+                    ),
+                    VerticalDivider(
+                      thickness: 4,
+                      color: Colors.blue,
+                    ),
+                    Icon(
+                      Icons.settings,
+                    ),
+                  ],
+                ),
               )
             ],
           ),
