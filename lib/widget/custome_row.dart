@@ -65,7 +65,10 @@ class BuildContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: height, width: width, color: color, child: Icon(icon));
-    ;
+      height: height,
+      width: width,
+      color: color,
+      child: Icon(icon),
+    );
   }
 }
