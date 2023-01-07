@@ -4,6 +4,7 @@ import 'package:test_project/widget/custom_container.dart';
 import 'package:test_project/widget/custome_row.dart';
 import 'package:test_project/widget/custome_stack.dart';
 import 'package:test_project/widget/indexed_stack.dart';
+import 'package:test_project/widget/name.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -27,6 +28,7 @@ class _myhomeState extends State<myhome> {
       appBar: AppBar(title: Text("widget")),
       body: mywidget,
       bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.green,
           currentIndex: myindex,
           onTap: (index) {
             myindex = index;
@@ -34,17 +36,30 @@ class _myhomeState extends State<myhome> {
               mywidget = IndexStack();
             } else if (myindex == 1) {
               mywidget = CustomeCustomer();
-            } else
+            } else if (myindex == 2) {
               mywidget = CustomeRow();
+            } else
+              mywidget = myname();
 
             setState(() {});
+            //single  line function
+            //multi  line function
           },
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: "setting"),
+                icon: Icon(
+                  Icons.home,
+                  color: Colors.black,
+                ),
+                label: "Home"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.browse_gallery), label: "gallery")
+                icon: Icon(Icons.settings, color: Colors.black),
+                label: "setting"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.browse_gallery, color: Colors.black),
+                label: "gallery"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.near_me, color: Colors.black), label: "extra")
           ]),
       // body: SingleChildScrollView(
       //     scrollDirection: Axis.vertical, child: CustomeStack()),

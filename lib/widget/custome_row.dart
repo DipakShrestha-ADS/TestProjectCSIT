@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class CustomeRow extends StatefulWidget {
   const CustomeRow({super.key});
@@ -8,6 +9,15 @@ class CustomeRow extends StatefulWidget {
 }
 
 class _CustomeRowState extends State<CustomeRow> {
+  List<Widget> _name() {
+    return List.generate(
+        5,
+        (index) => ListTile(
+              leading: Text("index of:$index"),
+              trailing: Icon(Icons.camera),
+            ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
