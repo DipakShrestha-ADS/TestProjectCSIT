@@ -1,12 +1,68 @@
 import 'package:flutter/material.dart';
-import 'package:test_project/widgets/custom_container.dart';
+import 'package:test_project/routingScreen/first_screen.dart';
+import 'package:test_project/routingScreen/second_screen.dart';
+import 'package:test_project/routingScreen/third_screen.dart';
+import 'package:test_project/widgets/screens/gallery.dart';
+import 'package:test_project/widgets/screens/home.dart';
+import 'package:test_project/widgets/screens/profile.dart';
+import 'package:test_project/widgets/screens/settings.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    // home: FirstScreen(),
+    routes: {
+      '/home': (ctx) {
+        return FirstScreen();
+      },
+      '/second': (ctx) {
+        return SecondScreen();
+      },
+      '/third': (ctx) {
+        return ThirdScreen();
+      },
+    },
+    /*onGenerateRoute: (routeSetting) {
+      final routeName = routeSetting.name;
+      print('route name: $routeName');
+      if (routeName == RouteConstants.firstScreenRoute) {
+        return MaterialPageRoute(
+          builder: (ctx) {
+            return FirstScreen();
+          },
+        );
+      } else if (routeName == RouteConstants.secondScreenRoute) {
+        return MaterialPageRoute(
+          builder: (ctx) {
+            return SecondScreen();
+          },
+        );
+      } else if (routeName == RouteConstants.thirdScreenRoute) {
+        return MaterialPageRoute(
+          builder: (ctx) {
+            return ThirdScreen();
+          },
+        );
+      }
+      return MaterialPageRoute(
+        builder: (ctx) {
+          return FirstScreen();
+        },
+      );
+    },*/
+    initialRoute: '/home',
+  ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int currentIndex = 0;
+  Widget screenWidget = Home();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,7 +71,50 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Widgets'),
         ),
-        body: CustomContainer(),
+        body: screenWidget,
+        bottomNavigationBar: BottomNavigationBar(
+          unselectedItemColor: Colors.grey,
+          selectedItemColor: Colors.orange,
+          currentIndex: currentIndex,
+          onTap: (index) {
+            print('index : $index');
+            currentIndex = index;
+            if (index == 0) {
+              screenWidget = Home();
+            } else if (index == 1) {
+              screenWidget = Profile();
+            } else if (index == 2) {
+              screenWidget = Settings();
+            } else {
+              screenWidget = Gallery();
+            }
+            setState(() {});
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+              ),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.people,
+              ),
+              label: 'Profile',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.settings,
+              ),
+              label: 'Setting',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.image),
+              label: 'Gallery',
+            ),
+          ],
+        ),
       ),
     );
   }
