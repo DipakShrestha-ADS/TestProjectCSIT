@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_project/routingScreen/first_screen.dart';
-import 'package:test_project/routingScreen/second_screen.dart';
-import 'package:test_project/routingScreen/third_screen.dart';
+import 'package:test_project/formAndValidation/sign_up.dart';
 import 'package:test_project/widgets/screens/gallery.dart';
 import 'package:test_project/widgets/screens/home.dart';
 import 'package:test_project/widgets/screens/profile.dart';
@@ -11,16 +9,11 @@ void main() {
   runApp(MaterialApp(
     // home: FirstScreen(),
     routes: {
-      '/home': (ctx) {
-        return FirstScreen();
-      },
-      '/second': (ctx) {
-        return SecondScreen();
-      },
-      '/third': (ctx) {
-        return ThirdScreen();
+      '/sign-up': (ctx) {
+        return SignUp();
       },
     },
+    initialRoute: '/sign-up',
     /*onGenerateRoute: (routeSetting) {
       final routeName = routeSetting.name;
       print('route name: $routeName');
@@ -49,7 +42,6 @@ void main() {
         },
       );
     },*/
-    initialRoute: '/home',
   ));
 }
 
